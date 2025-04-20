@@ -128,21 +128,22 @@ body{
     height: 40px;
     display: block;
 }
+#Sobre-mi{
+    justify-items: center;
+    width: 100%;
+}
 .Contenedor-sobre-mi{
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    margin: 1% 10% 5%;
+    margin: 0 10%;
 }
 #subcontenedor-1-SobreMi{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     color: #290040;
     font-size: 25px;
-}
-.box-subcontenedor-1-SobreMi{
-    width: 100%;
 }
 #subcontenedor-1-SobreMi p, #subcontenedor-1-SobreMi img, #subcontenedor-1-SobreMi ul{
     margin: 30px;
@@ -155,6 +156,10 @@ body{
 }
 #subcontenedor-1-SobreMi div img{
     height: 300px;
+    display: block;
+    border: 2px solid rgb(148, 108, 255);
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(148, 108, 255, 2);
 }
 #subcontenedor-2-SobreMi{
     margin-bottom: 50px;
@@ -162,7 +167,7 @@ body{
     color: #290040;
 }
 #subcontenedor-2-SobreMi p{
-    width: 50%;
+    width: 80%;
     text-align: justify;
     justify-self: center;
 }
@@ -496,7 +501,7 @@ input::placeholder, textarea::placeholder {
     font-family: "Combo", system-ui;
     font-style: italic;
     font-size: 14px;
-    opacity: 1; /* para asegurar que no se vea desvanecido */
+    opacity: 1; /* para que no se vea desvanecido */
     padding: 5px;
 }
 .box-button button{

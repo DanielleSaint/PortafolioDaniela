@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniela Portafolio</title>
+    <link rel="icon" href="./img/DS icono.png" type="image/png">
     <link rel="stylesheet" href="/estilo.css">
 </head>
 <body class="neon-mode">
@@ -48,7 +49,7 @@
                     <p><span>+ 4</span> proyectos y colaboraciones</p>
                 </div>
                 <div class="box-subcontenedor-1-SobreMi">
-                    <img src="./img/developer.frontend.backend.2.png" alt="Foto Dani">
+                    <img id="fotoPerfil" src="./img/DaniFoto.jpg" alt="Foto Dani">
                 </div>
                 <div class="box-subcontenedor-1-SobreMi">
                     <ul>
@@ -161,7 +162,7 @@
         <div class="lineaSeparadora"></div>
     </article>
 
-    <form id="Contacto">
+    <section id="Contacto">
         <div class="titulo"><h1>Contacto</h1></div>
         <div id="contenedor-madre-contacto">
             <div id="box-escribeme">
@@ -176,7 +177,7 @@
                 </div>
             </div>
             <div id="box-formulario">
-                <div id="box-form-propiedades">
+                <form id="box-form-propiedades">
                     <div class="box-input">
                         <h3>Nombre:</h3>
                         <input type="text" placeholder="nombre" required>
@@ -192,10 +193,10 @@
                     <div class="box-button">
                         <button type="submit">Enviar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    </form>
+    </section>
 
     <footer>
         <div class="lineaSeparadora"></div>
@@ -218,6 +219,9 @@
             </div>
         </div>
     </footer>
+
+
+    <script src="/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-<script src="/script.js"></script>
 </html>

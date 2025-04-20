@@ -1,33 +1,33 @@
 const text = "Desarrolladora Web Full Stack / Java - Frontend";
 const velocidad = 50;
 const borrar = 50;
-const ciclo = 1000; // Espera antes de volver a empezar
+const ciclo = 1000; //Espera antes de volver a empezar
 
-let i = 0;
+let i = 0; //Contador de letra
 let borrando = false;
 const target = document.getElementById("tecleando");
 
 function bucle() {
 if (!borrando && i <= text.length) {
     target.innerHTML = text.substring(0, i);
-    i++;
+    i++; //Agrega letra del text
     setTimeout(bucle, velocidad);
 } else if (borrando && i >= 0) {
     target.innerHTML = text.substring(0, i);
-    i--;
+    i--; //Quita letra del text de derecha a izquierda
     setTimeout(bucle, borrar);
 } else {
-    borrando = !borrando;
-    setTimeout(bucle, ciclo);
+    borrando = !borrando; //Este cambia el estado de borrando
+    setTimeout(bucle, ciclo); //Repite bucle para escribir o borrar
 }
 }
-window.onload = bucle;
-
+window.onload = bucle; //Iniciar cuando se cargue la página
+//--------------------------------------------------------------------------------------------------
 //Boton menu
 function desplegar() {
 document.getElementById("menuContenido").classList.toggle("mostrar");
 }
-// Cierra el menú si haces clic fuera de él
+//Cierra el menú al hacer clic fuera de él
 window.onclick = function(event) {
     if (!event.target.matches('.menu img')) {
         const desplegable = document.getElementsByClassName("contenido-menu");
@@ -39,74 +39,88 @@ window.onclick = function(event) {
         }
     }
 }
-
-//Boton tema Neon
+//--------------------------------------------------------------------------------------------------
+//Boton Neon Mode
 let neonMode = false;
 const originalStyles = new Map();
-
+//eligir aleatoriamente un color de la lista
 function randomNeonColor() {
     const neonColors = [
-        '#39ff14', '#ff073a', '#f0f', '#0ff', '#ff6ec7',
-        '#ffae00', '#9d00ff', '#00ffff', '#ff00ff', '#ffff00'
+        '#39ff14', '#ff073a', '#f0f', '#0ff', '#ff6ec7', '#ffae00', '#9d00ff', '#00ffff', '#ff00ff', '#ffff00'
     ];
     return neonColors[Math.floor(Math.random() * neonColors.length)];
 }
+//Ejecutar el cambio de las propiedades
 document.getElementById('neonToggle').addEventListener('click', () => {
-    neonMode = !neonMode;
-
+    neonMode = !neonMode; //Cambiar el valor boolean
+    //Selecionar el body, los elementos del HTML y la foto de perfil para cambiar las propiedades
     const body = document.body;
     const allElements = document.querySelectorAll('*');
+    const fotoPerfil = document.getElementById('fotoPerfil');
 
-    if (neonMode) {
-        // Guardar estilos originales
+    if (neonMode) { //Si está activado
+        // Cambiar la imagen de perfil en modo neón
+        fotoPerfil.src = "img/developer.frontend.backend.2.jpg";
+        //Guardar estilos originales
         allElements.forEach(el => {
-            originalStyles.set(el, {
+            originalStyles.set(el, { //Agregar estilos al Map
                 color: el.style.color,
                 backgroundColor: el.style.backgroundColor,
                 borderColor: el.style.borderColor
             });
         });
-
+        //Cambiar el fondo negro para el tema neon
         body.style.backgroundColor = "#000";
-
         allElements.forEach(el => {
-            if (el.tagName.match(/H[1-6]|P|SPAN|A|STRONG|BUTTON|LI|LABEL|DIV/)) {
-                const neon = randomNeonColor();
+            if (el.tagName.match(/H[1-6]|P|SPAN|A|STRONG|BUTTON|LI|LABEL|DIV/)) { //Cada etiqueta cambia sus propiedades
+                const neon = randomNeonColor(); //Seleciona el color aleatorio
                 el.style.color = neon;
                 el.style.borderColor = neon;
             }
         });
-
     } else {
-        // Restaurar estilos originales
+        // Volver a la imagen de modo claro
+        fotoPerfil.src = "img/DaniFoto.jpg";
+        //Restaurar estilos originales
         allElements.forEach(el => {
-            const styles = originalStyles.get(el);
+            const styles = originalStyles.get(el); //Obtener estilos de Map
             if (styles) {
                 el.style.color = styles.color;
                 el.style.backgroundColor = styles.backgroundColor;
                 el.style.borderColor = styles.borderColor;
-        
-                // Restaurar fondo de inputs y textareas
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.style.backgroundColor = styles.backgroundColor || "";
-                }
             }
         });
-        body.style.backgroundColor = "";
+        body.style.backgroundColor = ""; //Cambiar fondo claro
     }
 });
+//--------------------------------------------------------------------------------------------------
+//Formulario
+document.addEventListener("DOMContentLoaded", function () { //espera a que todo el contenido HTML se cargue completamente antes de ejecutar el script
+    const form = document.querySelector("#box-form-propiedades"); //seleccionamos el formulario usando su ID
 
-//no funciona
-// Al cargar la página, aplicar el tema guardado si existe
-window.addEventListener('DOMContentLoaded', () => {
-    const isNeon = localStorage.getItem('neon-mode') === 'true';
-    if (isNeon) {
-        document.body.classList.add('neon-mode');
-    }
-});
-
-// Alternar modo neón y guardar en localStorage
-document.getElementById("neonToggle").addEventListener("click", function() {
-    const isActive = document.body.classList.toggle("neon-mode");
-    localStorage.setItem('neon-mode', isActive);
+    form.addEventListener("submit", function (e) { //escucha el evento de "submit" del formulario
+        e.preventDefault(); // Evita que se refresque la página
+        // Obtener los valores que el usuario escribió
+        const nombre = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="email"]').value;
+        const mensaje = form.querySelector('textarea').value;
+        // Imprime en consola los valores que el usuario escribió
+        console.log("Formulario enviado:");
+        console.log("Nombre:", nombre);
+        console.log("Email:", email);
+        console.log("Mensaje:", mensaje);
+        // Mensaje de alerta
+        Swal.fire({ //SweetAlert2 es una librería externa para mostrar alertas personalizadas.
+            title: '¡Gracias por tu mensaje!',
+            text: 'Te contactaré muy pronto 😊',
+            icon: 'success',
+            confirmButtonColor: '#946CFF',
+            background: '#290040',
+            color: '#946CFF',
+        });
+        // Limpiar el formulario
+        form.querySelector('input[type="text"]').value = "";
+        form.querySelector('input[type="email"]').value = "";
+        form.querySelector('textarea').value = "";
+    });
 });
