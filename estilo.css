@@ -7,6 +7,7 @@ body{
     font-family: "Combo", system-ui;
     margin: 4% 4% 1%;
     padding: 1%;
+    background-color: rgb(244, 227, 255);
 }
 #contenedorNavBar{
     box-sizing: border-box;
@@ -92,7 +93,6 @@ body{
     cursor: pointer;
     border-radius: 25%;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 #stickyIcono {
     width: 40px;
@@ -105,9 +105,9 @@ body{
 .contenido-menu {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: transparent;
     min-width: 130px;
-    box-shadow: 0px 4px 10px #9400E6;
+    box-shadow: 0px 4px 10px #9400e6;
     z-index: 1;
     border-radius: 10px;
 }
@@ -157,9 +157,15 @@ body{
 #subcontenedor-1-SobreMi div img{
     height: 300px;
     display: block;
-    border: 2px solid rgb(148, 108, 255);
+    /* border: 2px solid #946cff;
     border-radius: 25px;
-    box-shadow: 0 0 30px rgba(148, 108, 255, 2);
+    box-shadow: 0 0 30px rgba(148, 108, 255, 2);*/
+    background-color: transparent;
+    animation: zoomInOut 6s ease-in-out infinite;
+}
+@keyframes zoomInOut {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.06);}
 }
 #subcontenedor-2-SobreMi{
     margin-bottom: 50px;
@@ -229,15 +235,18 @@ body{
 .box-iconos-1 img{
     width:80px;
     margin: 20px;
+    animation: zoomInOut 2s ease-in-out infinite;
 }
 .box-iconos-2 img{
     height:70px;
     margin: 30px;
     justify-content: center;
+    animation: zoomInOut 2s ease-in-out infinite;
 }
 .box-iconos-3 img{
     height:80px;
     margin: 12px;
+    animation: zoomInOut 2s ease-in-out infinite;
 }
 .box-iconos-3 p{
     color: #290040;
@@ -324,6 +333,7 @@ body{
 }
 #contenedor-cv img{
     width: 100%;
+    animation: zoomInOut 3s ease-in-out infinite;
 }
 #contenedor-cv a{
     width: 10%;
@@ -440,7 +450,7 @@ body{
     width: 23%;
 }
 #box-form-propiedades{
-    background-color: white;
+    background-color: transparent;
     border-style: solid;
     border-color: #946CFF;
     border-width: 2px;
@@ -452,7 +462,7 @@ body{
     color: #6B00BF;
 }
 .box-input input{
-    background-color: white;
+    background-color: transparent;
     font-family: "Combo", system-ui;
     color: #290040;
     font-size: 16px;
@@ -477,7 +487,7 @@ body{
 }
 .box-textarea textarea{
     font-family: "Combo", system-ui;
-    background-color: white;
+    background-color: transparent;
     color: #290040;
     font-size: 16px;
     border-style: solid;
@@ -566,6 +576,9 @@ input::placeholder, textarea::placeholder {
     text-align: end;
     margin: 0% 0;
     font-size: 16px;
+}
+.sombra-clara {
+    box-shadow: 0 4px 8px rgba(148, 0, 230, 0.3);
 }
 /*----------------------------------------------------------------------------------*/
 /* Para tablets en orientación vertical (pantallas de hasta 1024px) */

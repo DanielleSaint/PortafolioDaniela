@@ -57,10 +57,11 @@ document.getElementById('neonToggle').addEventListener('click', () => {
     const body = document.body;
     const allElements = document.querySelectorAll('*');
     const fotoPerfil = document.getElementById('fotoPerfil');
+    const sombras = document.querySelectorAll('.sombra-clara');
 
     if (neonMode) { //Si está activado
         // Cambiar la imagen de perfil en modo neón
-        fotoPerfil.src = "img/developer.frontend.backend.2.jpg";
+        fotoPerfil.src = "img/Perfil-Neon.png";
         //Guardar estilos originales
         allElements.forEach(el => {
             originalStyles.set(el, { //Agregar estilos al Map
@@ -76,11 +77,16 @@ document.getElementById('neonToggle').addEventListener('click', () => {
                 const neon = randomNeonColor(); //Seleciona el color aleatorio
                 el.style.color = neon;
                 el.style.borderColor = neon;
+                el.style.boxShadow = neon
             }
+        });
+        sombras.forEach(el => {
+            const neon = randomNeonColor();
+            el.style.boxShadow = `0 0 10px ${neon}, 0 0 20px ${neon}, 0 0 30px ${neon}`; //Cambiar sombras neon
         });
     } else {
         // Volver a la imagen de modo claro
-        fotoPerfil.src = "img/DaniFoto.jpg";
+        fotoPerfil.src = "img/Perfil-Claro.png";
         //Restaurar estilos originales
         allElements.forEach(el => {
             const styles = originalStyles.get(el); //Obtener estilos de Map
@@ -90,6 +96,9 @@ document.getElementById('neonToggle').addEventListener('click', () => {
                 el.style.borderColor = styles.borderColor;
             }
         });
+        sombras.forEach(el => {
+            el.style.boxShadow = "0 4px 8px rgba(148, 0, 230, 0.3)"; //Cambiar sombras claras
+          });
         body.style.backgroundColor = ""; //Cambiar fondo claro
     }
 });
