@@ -36,13 +36,8 @@ body{
 .redesSociales img {
     width: 33px;
     margin: 4% 0;
-    animation: girarZoom 2s ease-in-out infinite;
 }
-@keyframes girarZoom { /* Rotar imagenes de redes*/
-    0% { transform: rotate(0deg) scale(1);}
-    50% { transform: rotate(180deg) scale(1.2);}
-    100% { transform: rotate(360deg) scale(1);}
-}
+
 #tecleando {
     font-family: "Combo", system-ui;
     font-size: 2em;
@@ -550,18 +545,25 @@ input::placeholder, textarea::placeholder {
 .box-redes img {
     width: 33px;
     margin: 0 7px;
-    animation: girarZoom 2s ease-in-out infinite;
-}
-@keyframes girarZoom { /* Rotar imagenes de redes*/
-    0% { transform: rotate(0deg) scale(1);}
-    50% { transform: rotate(180deg) scale(1.2);}
-    100% { transform: rotate(360deg) scale(1);}
 }
 .box-skills{
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
     color: #6B00BF;
     margin: 0 5%;
     text-align: justify;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.box-skills p{
+    display: inline-block;
+    animation: scroll-marquee 20s linear infinite;
+}
+@keyframes scroll-marquee {
+    0% {transform: translateX(0%);}
+    100% {transform: translateX(-100%);}
 }
 .box-footer-2{
     display: flex;
